@@ -2,3 +2,7 @@
   padding-bottom: 10px; 
 };
 
+CardImg {
+  width:400px;
+  height: 400px;
+}

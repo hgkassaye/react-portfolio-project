@@ -20,11 +20,11 @@ class Main extends Component {
                 <Header />
                 <Switch>
                     <Route path='/home'> <Home /> </Route>
-                    <Route path='/buy'> <Buy /> </Route>
+                    <Route exact path='/buy' render={() => <Buy listings={this.props.listings} />} />
                     <Route path='/sell'> <Sell /> </Route>
                     <Redirect to='/home' /> 
                 </Switch>
-                <Footer />
+                {/* <Footer /> */}
             </React.Fragment>
         )
     };
