@@ -36,7 +36,7 @@ CardImg {
 
 .rightcol {
   /* background-color: blue; */
-  height: 800px;
+  /* height: 800px; */
   padding: 10px;
   margin: 40px;
 }
@@ -44,7 +44,7 @@ CardImg {
 .leftcol {
   /* background-color: green; */
   width: 700px;
-  height: 800px;
+  /* height: 800px; */
   padding: 10px;
   margin: 40px 90px 40px;
   align-items: 'center';

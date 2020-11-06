@@ -7,11 +7,16 @@ import Rent from './SellComponent';
 import Add from './AddListing'
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { addListing} from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
     return {
         listings: state.listings
     }
+}
+
+const mapDispatchToProps = {
+    addComment: (name, price, type, image ) => (addListing(name, price, type, image)),
 }
 
 class Main extends Component {
@@ -23,7 +28,7 @@ class Main extends Component {
                     <Route path='/home'> <Home /> </Route>
                     <Route exact path='/buy' render={() => <Buy listings={this.props.listings} />} />
                     <Route exact path='/rent' render={() => <Rent listings={this.props.listings} />} />
-                    <Route exact path='/list' render={() => <Add />} />
+                    <Route exact path='/list' render={() => <Add addComment={this.props.addComment}/>} />
                     <Redirect to='/home' /> 
                 </Switch>
                 <Footer />
@@ -33,4 +38,4 @@ class Main extends Component {
 }
 
 
-export default withRouter(connect(mapStateToProps)(Main));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));

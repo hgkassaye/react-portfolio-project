@@ -1,0 +1,1 @@
+export const ADD_LISTING = 'ADD_LISTING';
