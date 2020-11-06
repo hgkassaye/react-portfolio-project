@@ -16,7 +16,7 @@ class Footer extends Component {
                         </div>
                         <div className='col'>
                             <h5>Follow Us</h5>
-                            <ul class='list-unstyled'>
+                            <ul className='list-unstyled'>
                                 <li className='social-container'>
                                     <a className="btn btn-social-icon btn-instagram" href="http://instagram.com/"><i className="fa fa-instagram" /></a> Instagram
                                 </li>
