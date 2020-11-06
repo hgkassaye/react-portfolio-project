@@ -3,7 +3,8 @@ import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import Buy from './BuyComponent';
-import Sell from './SellComponent';
+import Rent from './SellComponent';
+import Add from './AddListing'
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -21,10 +22,11 @@ class Main extends Component {
                 <Switch>
                     <Route path='/home'> <Home /> </Route>
                     <Route exact path='/buy' render={() => <Buy listings={this.props.listings} />} />
-                    <Route path='/sell'> <Sell /> </Route>
+                    <Route exact path='/rent' render={() => <Rent listings={this.props.listings} />} />
+                    <Route exact path='/list' render={() => <Add />} />
                     <Redirect to='/home' /> 
                 </Switch>
-                {/* <Footer /> */}
+                <Footer />
             </React.Fragment>
         )
     };

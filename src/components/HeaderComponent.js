@@ -31,7 +31,7 @@ class Header extends Component {
 
                 <Navbar light expand='md'>
                     <div className='container'>
-                        <NavbarBrand className='mr-auto' href='/'>Abode</NavbarBrand>
+                        <NavbarBrand className='mr-auto' href='/'><img src='/assets/images/logo.png' height='50' width='50' alt='Abode Logo' /></NavbarBrand>
                         <NavbarToggler onClick={this.toggleNav} />
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar>
@@ -42,10 +42,10 @@ class Header extends Component {
                                     <NavLink className='nav-link' to='/buy'>Buy</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className='nav-link' to='/sell'>Sell</NavLink>
+                                    <NavLink className='nav-link' to='/rent'>Rent</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className='nav-link' to='/rent'>Rent</NavLink>
+                                    <NavLink className='nav-link' to='/list'>Add Listing</NavLink>
                                 </NavItem>
                             </Nav>  
                         </Collapse>

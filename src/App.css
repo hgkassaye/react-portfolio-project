@@ -1,8 +1,13 @@
+.site-footer {
+  background-image: linear-gradient(#CEC8FF, white);
+  padding: 20px 0;
+};
+
 .social-container {
-  padding-bottom: 10px; 
+  padding-bottom: 20px; 
 };
 
 CardImg {
   width:400px;
   height: 400px;
-}
+};

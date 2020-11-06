@@ -1,51 +1,70 @@
-import React, { Component } from 'react';
-import { Card, CardBody,CardImg, CardTitle, CardImgOverlay } from 'reactstrap';
+import React, { Component, useState } from 'react';
+import { Button, Card, CardBody,CardImg, CardTitle, CardSubtitle, Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption, UncontrolledCarousel } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 
-function RenderListItem({listing}) {
-    return(
-        <Card>
-            <Link to={`/buy/${listing.id}`}>
-                <CardImg width='100%' src={listing.image} atl={listing.name} />
-                <CardBody>
-                    <CardTitle>{listing.name}</CardTitle>
-                </CardBody>
-            </Link>
-        </Card>
-    )
-};
+const RenderImageItem = (info) => {
+    const imagelist = info.info
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [animating, setAnimating] = useState(false);
 
-// class Buy extends Component {
-//     constructor (props) {
-//         super(props);
-//     }
+    const next = () => {
+        if (animating) return;
+        const nextIndex = activeIndex === imagelist.length - 1 ? 0 : activeIndex + 1 ;
+        setActiveIndex(nextIndex);
+    };
 
+    const previous = () => {
+        if (animating) return;
+        const nextIndex = activeIndex === 0 ? imagelist.length - 1 : activeIndex - 1 ;
+        setActiveIndex(nextIndex);
+    }
+
+    const goToIndex = (newIndex) => {
+        if (animating) return ;
+        setActiveIndex(newIndex);
+    }
     
-//     render() {
-//         const listings = this.props.listings.maps(listing => {
-//             return (
-//                 <div>
-//                     <RenderListItem listing={listing} />
-//                 </div>
-//             )
-//         });
+    const slides = imagelist.map(item => {
+        return (
+            <CarouselItem
+                onExiting={() => setAnimating(true)}
+                onExited={() => setAnimating(false)}
+                key={item.image}
+            >
+                <img width='100%' src={item} alt='Image not found' />
+            </CarouselItem>
+        );
+    });
+    return (
+        <Carousel
+            activeIndex={activeIndex}
+            next={next}
+            previous={previous}
+        >
+            <CarouselIndicators items={imagelist} activeIndex={activeIndex} onClickHandler={goToIndex}/>
+            {slides}
+            <CarouselControl direction='prev' directionText='Previous' onClickHandler={previous} />
+            <CarouselControl direction='next' directionText='Next' onClickHandler={next} />
+        </Carousel>
+    )
+}
 
-//         return (
-//             <div className='container'>
-//                 <div className='row'>
-//                     {listings}
-//                 </div>
-//             </div>
-//         )
-//     }
-// };
 
 function Buy(props) {
-    const listings = props.listings.map(listing => {
+    const listings = props.listings.filter(listing => listing.type === 'buy')
+    const listingItem = listings.map(listing => {
         return (
-            <div key={listing.id} >
-                <RenderListItem listing={listing} />
+            <div className='col-md-6'>
+                <Card>
+                    <RenderImageItem info={listing.image}/>
+                    <CardBody>
+                        <CardTitle>
+                            <h4>{listing.price}</h4>
+                        </CardTitle>
+                        <CardSubtitle>{listing.name}</CardSubtitle>
+                    </CardBody>
+                </Card>
             </div>
         )
     });
@@ -53,9 +72,7 @@ function Buy(props) {
     return (
         <div className='container'>
             <div className='row'>
-                {/* <div className='col-12 m-5'> */}
-                {listings}
-                {/* </div> */}
+                {listingItem}
             </div>
         </div>
     )
@@ -63,3 +80,4 @@ function Buy(props) {
 }
 
 export default Buy;
+
