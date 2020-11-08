@@ -18,38 +18,36 @@ class Header extends Component {
     render() {
         return (
             <React.Fragment>
-                <Jumbotron fluid>
-                    <div className='container'>
-                        <div className='row'>
-                            <div className='col'>
-                                <h1>Abode</h1>
-                                <h2>Let us help you find your next home</h2>
-                            </div>
-                        </div>
-                    </div>
-                </Jumbotron>
-
                 <Navbar light expand='md'>
-                    <div className='container'>
-                        <NavbarBrand className='mr-auto' href='/'><img src='/assets/images/logo.png' height='50' width='50' alt='Abode Logo' /></NavbarBrand>
+                    {/* <div className='container'> */}
+                        <NavbarBrand className='mr-auto' href='/'><img src='/assets/images/logo.png' height='80' width='80' alt='Abode Logo' /></NavbarBrand>
                         <NavbarToggler onClick={this.toggleNav} />
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar>
                                 <NavItem>
-                                    <NavLink className='nav-link' to='/home'>Home</NavLink>
+                                    <NavLink className='nav-link' to='/home' onClick={this.toggleNav}>HOME</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className='nav-link' to='/buy'>Buy</NavLink>
+                                    <NavLink className='nav-link' to='/buy' onClick={this.toggleNav}>BUY</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className='nav-link' to='/rent'>Rent</NavLink>
+                                    <NavLink className='nav-link' to='/rent' onClick={this.toggleNav}>RENT</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className='nav-link' to='/list'>Add Listing</NavLink>
+                                    <NavLink className='nav-link' to='/list' onClick={this.toggleNav}>ADD LISTING</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink className='nav-link' to='/list' onClick={this.toggleNav}>SAVED</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink className='nav-link' to='/list' onClick={this.toggleNav}>SIGN IN</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink className='nav-link' to='/list' onClick={this.toggleNav}>CREATE ACCOUNT</NavLink>
                                 </NavItem>
                             </Nav>  
                         </Collapse>
-                    </div>
+                    {/* </div> */}
                 </Navbar>
             </React.Fragment>
         )
