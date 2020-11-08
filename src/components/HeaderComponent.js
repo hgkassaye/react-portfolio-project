@@ -18,34 +18,36 @@ class Header extends Component {
     render() {
         return (
             <React.Fragment>
-                <Navbar light expand='md'>
+                <Navbar light sticky='top' expand='lg'>
                     {/* <div className='container'> */}
-                        <NavbarBrand className='mr-auto' href='/'><img src='/assets/images/logo.png' height='80' width='80' alt='Abode Logo' /></NavbarBrand>
+                        <NavbarBrand className='mr-auto' href='/'><img src='/assets/images/logo.png' height='100' width='100' alt='Abode Logo' /></NavbarBrand>
                         <NavbarToggler onClick={this.toggleNav} />
                         <Collapse isOpen={this.state.isNavOpen} navbar>
-                            <Nav navbar>
+                            <Nav navbar className='mr-auto' style={{marginLeft: '90px', textAlign: 'center', justifyContent: 'center'}}>
                                 <NavItem>
-                                    <NavLink className='nav-link' to='/home' onClick={this.toggleNav}>HOME</NavLink>
+                                    <NavLink style={{paddingRight: '25px'}} className='nav-link' to='/home' onClick={this.toggleNav}>HOME</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className='nav-link' to='/buy' onClick={this.toggleNav}>BUY</NavLink>
+                                    <NavLink style={{paddingRight: '25px'}} className='nav-link' to='/buy' onClick={this.toggleNav}>BUY</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className='nav-link' to='/rent' onClick={this.toggleNav}>RENT</NavLink>
+                                    <NavLink style={{paddingRight: '25px'}} className='nav-link' to='/rent' onClick={this.toggleNav}>RENT</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className='nav-link' to='/list' onClick={this.toggleNav}>ADD LISTING</NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink className='nav-link' to='/list' onClick={this.toggleNav}>SAVED</NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink className='nav-link' to='/list' onClick={this.toggleNav}>SIGN IN</NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink className='nav-link' to='/list' onClick={this.toggleNav}>CREATE ACCOUNT</NavLink>
+                                    <NavLink style={{paddingRight: '25px'}} className='nav-link' to='/list' onClick={this.toggleNav}>ADD LISTING</NavLink>
                                 </NavItem>
                             </Nav>  
+                            <Nav navbar className='ml-auto' style={{marginLeft: '90px', textAlign: 'center', justifyContent: 'center'}}>
+                                <NavItem>
+                                    <NavLink style={{paddingRight: '25px'}} className='nav-link' to='/list' onClick={this.toggleNav}>SAVED</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink style={{paddingRight: '25px'}} className='nav-link' to='/list' onClick={this.toggleNav}>SIGN IN</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink style={{paddingRight: '25px'}} className='nav-link lef-content' to='/list' onClick={this.toggleNav}>CREATE ACCOUNT</NavLink>
+                                </NavItem>
+                            </Nav>
                         </Collapse>
                     {/* </div> */}
                 </Navbar>
@@ -55,3 +57,5 @@ class Header extends Component {
 }
 
 export default Header;
+
+

@@ -53,6 +53,7 @@ class Add extends Component {
 
     render() {
         return (
+            <div className='wrapper'>
           <div className='groupcol'>
               <div className='row'>
                     <div className='column'>
@@ -141,6 +142,7 @@ class Add extends Component {
                     </div>
                 
               </div>
+          </div>
           </div>
             
         )

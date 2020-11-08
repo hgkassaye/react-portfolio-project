@@ -23,6 +23,8 @@ class Main extends Component {
     render() {
         return (
             <React.Fragment>
+                <div className='main-container'>
+                {/* <div className='wrapper'> */}
                 <Header />
                 <Switch>
                     <Route path='/home'> <Home /> </Route>
@@ -32,6 +34,8 @@ class Main extends Component {
                     <Redirect to='/home' /> 
                 </Switch>
                 <Footer />
+                </div>
+                {/* </div> */}
             </React.Fragment>
         )
     };

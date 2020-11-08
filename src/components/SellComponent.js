@@ -73,7 +73,7 @@ function Rent(props) {
 
 
     return (
-        <div className='container'>
+        <div className='wrapper'>
             <div className='row'>
                 {listingItem}
             </div>
