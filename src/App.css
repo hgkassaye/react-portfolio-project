@@ -47,6 +47,34 @@ html {
   background: linear-gradient(90deg,#e2eafc 0% ,#e2eafc 100%);
 }
 
+.search-container {
+  background-image: url('/assets/images/beachone.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 700px;
+  border: 1px solid white ;
+  border-radius: 20px;
+  /* height: 400px; */
+  /* width: 500px; */
+}
+.card {
+  margin: 10px;
+}
+
+.card-img-overlay {
+  background-color: rgba(0,0,0,0.4);
+  border: 7px solid white;
+  border-radius: 40px; 
+}
+.card-title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.7rem;
+  color: white;
+}
+
 .social-container {
   padding-bottom: 20px; 
 }

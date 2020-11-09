@@ -25,14 +25,12 @@ class Main extends Component {
         return (
             <React.Fragment>
                 <div className='main-container'>
-                {/* <div className='wrapper'> */}
                 <Header />
                 <Switch>
                     <Route path='/home'> <Home /> </Route>
                     <Route exact path='/buy' render={() => <Buy listings={this.props.listings} />} />
                     <Route exact path='/rent' render={() => <Rent listings={this.props.listings} />} />
                     <Route exact path='/list' render={() => <Add addComment={this.props.addComment}/>} />
-                    <Route exact path='/new' component={New} />
                     <Redirect to='/home' /> 
                 </Switch>
                 <Footer />
