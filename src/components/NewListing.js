@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 // import { Button, Form, FormGroup, Label, Input, Col} from 'reactstrap'
-import { Button, Label, Container,Col, Row} from 'reactstrap';
+import { Button, Label, Container, Col, Row} from 'reactstrap';
 import { Control, LocalForm } from 'react-redux-form';
 
 const image = ['assets/images/homeone/home-one.jpg','assets/images/homeone/home-two.jpg','assets/images/homeone/home-three.jpg','assets/images/homeone/home-four.jpg' ]
-class Add extends Component {
+class New extends Component {
 
     constructor(props) {
         super(props);
@@ -57,8 +57,7 @@ class Add extends Component {
                 <Container>
                     <Row>
                         <Col sm={12} md={6}>
-                            <h4>Thank you for choosing abode!</h4>
-                            <span>Let us help you spread the word</span>
+                            <h4>Welcome to abode!</h4>
                         </Col>
                         <Col sm={12} md={6}>
                             <LocalForm onSubmit={values => this.handleSubmit(values)}>
@@ -144,8 +143,7 @@ class Add extends Component {
             
         )
     }
-  
 
 }
 
-export default Add;
+export default New;

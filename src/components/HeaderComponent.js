@@ -37,9 +37,9 @@ class Header extends Component {
                                     <NavLink style={{paddingRight: '25px'}} className='nav-link' to='/list' onClick={this.toggleNav}>ADD LISTING</NavLink>
                                 </NavItem>
                             </Nav>  
-                            <Nav navbar className='ml-auto' style={{marginLeft: '90px', textAlign: 'center', justifyContent: 'center'}}>
+                            <Nav navbar className='ml-auto' style={{marginLeft: 'px', textAlign: 'center', justifyContent: 'center'}}>
                                 <NavItem>
-                                    <NavLink style={{paddingRight: '25px'}} className='nav-link' to='/list' onClick={this.toggleNav}>SAVED</NavLink>
+                                    <NavLink style={{paddingRight: '25px'}} className='nav-link' to='/new' onClick={this.toggleNav}>SAVED</NavLink>
                                 </NavItem>
                                 <NavItem>
                                     <NavLink style={{paddingRight: '25px'}} className='nav-link' to='/list' onClick={this.toggleNav}>SIGN IN</NavLink>

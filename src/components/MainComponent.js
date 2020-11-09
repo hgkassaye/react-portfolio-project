@@ -4,7 +4,8 @@ import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import Buy from './BuyComponent';
 import Rent from './SellComponent';
-import Add from './AddListing'
+import Add from './AddListing';
+import New from './NewListing';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addListing} from '../redux/ActionCreators';
@@ -31,6 +32,7 @@ class Main extends Component {
                     <Route exact path='/buy' render={() => <Buy listings={this.props.listings} />} />
                     <Route exact path='/rent' render={() => <Rent listings={this.props.listings} />} />
                     <Route exact path='/list' render={() => <Add addComment={this.props.addComment}/>} />
+                    <Route exact path='/new' component={New} />
                     <Redirect to='/home' /> 
                 </Switch>
                 <Footer />
