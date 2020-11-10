@@ -3,7 +3,7 @@ import { Button, Card, CardBody,CardImg, CardTitle, CardText, CardSubtitle, Caro
 import { Link } from 'react-router-dom';
 import {FaHeart } from 'react-icons/fa';
 import {FaRegHeart} from 'react-icons/fa';
-
+import { Loading } from './LoadingComponent'
 
 const RenderImageItem = (info) => {
     const imagelist = info.info
@@ -54,6 +54,14 @@ const RenderImageItem = (info) => {
 
 
 function Buy(props) {
+    if (props.isLoading) {
+        return <Loading />;
+    }
+
+    if (props.errMess) {
+        return <h4>{props.errMess}</h4>
+    }
+
     const listings = props.listings.filter(listing => listing.type === 'buy')
 
     const markFavorite = (id) => {

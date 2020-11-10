@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react';
 import { Card, CardBody,CardImg, CardTitle, Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption, UncontrolledCarousel, CardSubtitle } from 'reactstrap';
-
+import { Loading } from './LoadingComponent';
 
 const RenderImageItem = (info) => {
     const imagelist = info.info
@@ -52,7 +52,12 @@ const RenderImageItem = (info) => {
 
 
 function Rent(props) {
-
+    if (props.isLoading) {
+        return <Loading />;
+    }
+    if (props.errMess) {
+        return <h4>{props.errMess}</h4>
+    }
     const listings = props.listings.filter(listing => listing.type === 'rent')
 
     const listingItem = listings.map(listing => {

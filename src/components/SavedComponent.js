@@ -1,6 +1,7 @@
 import React, { Component, useState } from 'react';
 import { Button, Card, CardBody,CardImg, CardTitle, CardSubtitle, Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption, UncontrolledCarousel } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { Loading } from './LoadingComponent';
 
 
 const RenderImageItem = (info) => {
@@ -52,6 +53,12 @@ const RenderImageItem = (info) => {
 
 
 function Favorite (props) {
+    if(props.isLoading) {
+        return <Loading />
+    }
+    if(props.errMess) {
+        return <h4>{props.errMess}</h4>
+    }
     const listings = props.listings.filter(listing => props.favorites.includes(listing.id))
     const listingItem = listings.map(listing => {
         return (

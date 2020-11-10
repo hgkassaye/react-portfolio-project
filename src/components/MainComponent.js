@@ -8,7 +8,7 @@ import Add from './AddListing';
 import Favorite from './SavedComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addListing, postFavorite } from '../redux/ActionCreators';
+import { addListing, postFavorite, fetchListings } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
     return {
@@ -18,11 +18,17 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
+    fetchListings: () => (fetchListings()),
     addListing: (name, price, type, image ) => (addListing(name, price, type, image)),
     postFavorite: (id) => (postFavorite(id))
 }
 
 class Main extends Component {
+
+    componentDidMount() {
+        this.props.fetchListings();
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -30,10 +36,25 @@ class Main extends Component {
                 <Header />
                 <Switch>
                     <Route path='/home'> <Home /> </Route>
-                    <Route exact path='/buy' render={() => <Buy listings={this.props.listings} favorites={this.props.favorites} postFavorite={this.props.postFavorite} />} />
-                    <Route exact path='/rent' render={() => <Rent listings={this.props.listings} />} />
+                    <Route exact path='/buy' render={() => <Buy 
+                        listings={this.props.listings.listings} 
+                        isLoading={this.props.listings.isLoading}
+                        errMess={this.props.listings.errMess}
+                        favorites={this.props.favorites} 
+                        postFavorite={this.props.postFavorite} />} 
+                    />
+                    <Route exact path='/rent' render={() => <Rent 
+                        listings={this.props.listings.listings} 
+                        isLoading={this.props.listings.isLoading}
+                        errMess={this.props.listings.errMess} />} 
+                    />
                     <Route exact path='/list' render={() => <Add addListing={this.props.addListing} />} />
-                    <Route exact path='/favorite' render={() => <Favorite listings={this.props.listings} favorites={this.props.favorites}/>} />
+                    <Route exact path='/favorite' render={() => <Favorite 
+                        listings={this.props.listings.listings} 
+                        isLoading={this.props.listings.isLoading}
+                        errMess={this.props.listings.errMess}
+                        favorites={this.props.favorites}/>} 
+                    />
                     <Redirect to='/home' /> 
                 </Switch>
                 <Footer />
