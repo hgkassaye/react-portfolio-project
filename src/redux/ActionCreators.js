@@ -9,3 +9,16 @@ export const addListing = (name, price,type,image) => ({
         image: image,
     }
 });
+
+
+export const postFavorite = (id) => dispatch => {
+    setTimeout(() => {
+        dispatch(addFavorite(id));
+        
+    }, 2000);
+}
+
+export const addFavorite = (id) => ({
+    type: ActionTypes.ADD_FAVORITE,
+    payload: id
+});

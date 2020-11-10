@@ -37,7 +37,7 @@ class Add extends Component {
     handleSubmit(values) {
         console.log("current state is : " + JSON.stringify(values));
         alert("current state is : " + JSON.stringify(values));
-        this.props.addComment(values.name, values.price, values.type,image)
+        this.props.addListing(values.name, values.price, values.type,image)
         // event.preventDefault();
     }
 

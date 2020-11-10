@@ -1,8 +1,6 @@
 import React, { Component, useState } from 'react';
-import { Button, Card, CardBody,CardImg, CardTitle, CardText, CardSubtitle, Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption, UncontrolledCarousel } from 'reactstrap';
+import { Button, Card, CardBody,CardImg, CardTitle, CardSubtitle, Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption, UncontrolledCarousel } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import {FaHeart } from 'react-icons/fa';
-import {FaRegHeart} from 'react-icons/fa';
 
 
 const RenderImageItem = (info) => {
@@ -53,14 +51,8 @@ const RenderImageItem = (info) => {
 }
 
 
-function Buy(props) {
-    const listings = props.listings.filter(listing => listing.type === 'buy')
-
-    const markFavorite = (id) => {
-        props.postFavorite(id);
-        alert({id})
-    }
-
+function Favorite (props) {
+    const listings = props.listings.filter(listing => props.favorites.includes(listing.id))
     const listingItem = listings.map(listing => {
         return (
             <div className='col-md-6'>
@@ -71,17 +63,12 @@ function Buy(props) {
                             <h4>{listing.price}</h4>
                         </CardTitle>
                         <CardSubtitle>{listing.name}</CardSubtitle>
-                        <CardText>
-                            { (props.favorites.includes(listing.id)) ? <FaHeart style={{color:'red'}} onClick={() => markFavorite(listing.id)}/> : <FaRegHeart style={{color:'red'}} onClick={() => markFavorite(listing.id)}/> }
-                        </CardText>
-                        
-
                     </CardBody>
                 </Card>
             </div>
         )
     });
- 
+
     return (
         <div className='wrapper'>
             <div className='row'>
@@ -92,5 +79,5 @@ function Buy(props) {
 
 }
 
-export default Buy;
+export default Favorite;
 
