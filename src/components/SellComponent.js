@@ -1,6 +1,7 @@
 import React, { Component, useState } from 'react';
 import { Card, CardBody,CardImg, CardTitle, Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption, UncontrolledCarousel, CardSubtitle } from 'reactstrap';
 import { Loading } from './LoadingComponent';
+import { baseUrl } from '../shared/baseUrl';
 
 const RenderImageItem = (info) => {
     const imagelist = info.info
@@ -31,7 +32,7 @@ const RenderImageItem = (info) => {
                 onExited={() => setAnimating(false)}
                 key={item.image}
             >
-                <img width='100%' src={item} alt='Image not found' />
+                <img width='100%' src={baseUrl + item} alt='Image not found' />
             </CarouselItem>
         );
     });

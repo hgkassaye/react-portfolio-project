@@ -5,9 +5,12 @@ import { LISTINGS } from '../shared/Listing';
 export const fetchListings = () => dispatch =>{
     dispatch(listingLoading())
     
-    setTimeout(() => {
-        dispatch(renderListing(LISTINGS));
-    }, 2000);
+    // setTimeout(() => {
+    //     dispatch(renderListing(LISTINGS));
+    // }, 2000);
+    return fetch(baseUrl + 'listings')
+        .then(response => response.json())
+        .then(LISTINGS => dispatch(renderListing(LISTINGS)))
 }
 
 export const listingLoading = () => ({

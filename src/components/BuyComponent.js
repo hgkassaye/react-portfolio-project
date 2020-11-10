@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import {FaHeart } from 'react-icons/fa';
 import {FaRegHeart} from 'react-icons/fa';
 import { Loading } from './LoadingComponent'
+import { baseUrl } from '../shared/baseUrl';
 
 const RenderImageItem = (info) => {
     const imagelist = info.info
@@ -34,7 +35,7 @@ const RenderImageItem = (info) => {
                 onExited={() => setAnimating(false)}
                 key={item.image}
             >
-                <img className='d-block w-100' src={item} alt='Image not found' />
+                <img className='d-block w-100' src={baseUrl + item} alt='Image not found' />
             </CarouselItem>
         );
     });
