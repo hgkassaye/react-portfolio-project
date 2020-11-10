@@ -35,12 +35,12 @@ class Header extends Component {
     render() {
         return (
             <React.Fragment>
-                <Navbar light sticky='top' expand='lg'>
+                <Navbar dark sticky='top' expand='lg'>
                     {/* <div className='container'> */}
                         <NavbarBrand className='mr-auto' href='/'><img src='/assets/images/logo.png' height='100' width='100' alt='Abode Logo' /></NavbarBrand>
                         <NavbarToggler onClick={this.toggleNav} />
                         <Collapse isOpen={this.state.isNavOpen} navbar>
-                            <Nav navbar className='mr-auto' style={{marginLeft: '90px', textAlign: 'center', justifyContent: 'center'}}>
+                            <Nav navbar className='ml-auto' style={{marginLeft: '90px', textAlign: 'center', justifyContent: 'center'}}>
                                 <NavItem>
                                     <NavLink style={{paddingRight: '25px'}} className='nav-link' to='/home' onClick={this.toggleNav}>HOME</NavLink>
                                 </NavItem>

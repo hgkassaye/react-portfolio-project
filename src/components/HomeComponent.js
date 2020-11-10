@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardImgOverlay, CardTitle, Input,InputGroupAddon,InputGroup,InputGroupText} from 'reactstrap';
-import logo from './realestate101.jpg';
+import { Card, CardImg, CardImgOverlay, CardTitle, Input,InputGroupAddon,InputGroup,InputGroupText} from 'reactstrap'; 
+import { FaSearch } from 'react-icons/fa'
+import { IconContext } from 'react-icons';
 
 
 class Home extends Component {
     render() {
         return (
             <div className='wrapper'>
-                <div style={{display: 'flex', flexDirection:'column', alignSelf: 'center', justifyContent: 'center', alignItems:'center', height: '800px'}} className='search-container'>
+                {/* <div style={{display: 'flex', flexDirection:'column', alignSelf: 'center', justifyContent: 'center', alignItems:'center', height: '800px'}} className='search-container'>
                     <h4>Explore your next home!</h4>
                     <InputGroup style={{width: '40%', display: 'flex', justifyContent: 'center', alignItems:'center'}} className='searchBar'>
                         <Input style={{marginBottom: '500px', width:'15px', textAlign: 'center', height:'50px'}} placeholder='Enter city, state, or zipcode' />
@@ -15,6 +16,11 @@ class Home extends Component {
                             <InputGroupText><i className='fa fa-search fa-lg'/></InputGroupText>
                         </InputGroupAddon>
                     </InputGroup>
+                </div> */}
+                <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}} className='search-container'>
+                    {/* <h4>Explore your next home</h4> */}
+                    <Input style={{width: '30%', textAlign: 'center', border: 'none'}} placeholder='Enter city, state, or zipcode'/> 
+                    <IconContext.Provider value={{color: 'blue', size: '1em', className:'search-icon'}}><FaSearch/></IconContext.Provider>
                 </div>
                 <div className='container'>
                     <div style={{marginTop:'10%'}} className='row'>
