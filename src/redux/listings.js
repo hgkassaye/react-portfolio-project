@@ -22,7 +22,7 @@ export const Listings = (state = {isLoading: true, errMess: null, listings: []},
             return {...state, isLoading: false, errMess: action.payload};
         case ActionTypes.ADD_LISTING:
             const listing = action.payload;
-            listing.id = state.length;
+            // listing.id = state.length;
             return {...state, listings: state.listings.concat(listing)}
         default: 
             return state;

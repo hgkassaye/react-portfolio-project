@@ -37,7 +37,7 @@ class Add extends Component {
     handleSubmit(values) {
         console.log("current state is : " + JSON.stringify(values));
         alert("current state is : " + JSON.stringify(values));
-        this.props.addListing(values.name, values.price, values.type,image)
+        this.props.postListing(values.name, values.price, values.type,image)
         // event.preventDefault();
     }
 
@@ -115,11 +115,12 @@ class Add extends Component {
                                         />
                                     </Col>
                                 </Row>  */}
-                                {/* <Row className='form-group'>
+                                <Row className='form-group'>
                                     <Label htmlFor='image' md={3}> Add Image</Label>
                                     <Col md={9}>
-                                        <Control.file id='bath' name='image'
+                                        <Control.file model='.image' id='image' name='image'
                                             placeholder='Image'
+                                            className='form-control'
                                             // value={this.state.image}
                                             onChange={this.handleFileChange}
                                             multiple
@@ -127,7 +128,7 @@ class Add extends Component {
                                         <Button onClick={this.uploadFile}>Upload</Button>
 
                                     </Col>
-                                </Row>  */}
+                                </Row> 
                                 <Row className='form-group'> 
                                     <Col md={{ size: 9, offset: 2}}>
                                         <Button type='Submit' color='primary'>
