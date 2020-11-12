@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardImgOverlay, CardTitle, Input,InputGroupAddon,InputGroup,InputGroupText} from 'reactstrap'; 
+import { Button, Card, CardImg, CardImgOverlay, CardTitle, Input,InputGroupAddon,InputGroup,InputGroupText} from 'reactstrap'; 
 import { FaSearch } from 'react-icons/fa'
 import { IconContext } from 'react-icons';
+import { LoremIpsum } from 'react-lorem-ipsum';
 
 
 class Home extends Component {
@@ -54,6 +55,26 @@ class Home extends Component {
                             </Card>
                         </div>
                     </div>
+                </div>
+                <div className='grid-container'>
+                    <div className='row-one'>
+                        <h1 style={{textAlign: 'center', marginTop: '30px'}}>RESOURCES</h1>
+                    </div>
+                    <div className='row-two'></div>
+                    <div className='row-three'></div>
+                    <div className='row-four'>
+                        <h2>How to apply and secure a mortgage?</h2>
+                        <br />
+                        <p><LoremIpsum /></p>
+                        <Button color='info'> Read More</Button>
+                    </div>
+                    <div className='row-five'>
+                        <h2>Where to start designing your space?</h2>
+                        <br />
+                        <p><LoremIpsum /></p>
+                        <Button color='info'>Read More</Button>
+                    </div>
+                    <div className='row-six'></div>
                 </div>
             </div>
         )

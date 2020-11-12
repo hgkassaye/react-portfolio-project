@@ -30,7 +30,6 @@ html {
   margin-right: 20px;
 }
 
-
 .navbar-dark {
   /* background: linear-gradient(90deg,#e2eafc 0% ,#e2eafc 100%); */
   background-color: rgb(0,16,23);
@@ -60,10 +59,15 @@ html {
   position: relative;
   right: 30px;
 }
+
 .card {
   margin: 10px;
 }
 
+.w-100 {
+  width: 100% !important;
+  height: 75vh;
+}
 .card-img-overlay {
   background-color: rgba(0,0,0,0.4);
   border: 7px solid white;
@@ -125,6 +129,71 @@ html {
   align-items: 'center';
   justify-content: 'center';
 } 
+
+.grid-container {
+  /* background-color: white; */
+  height: 100vh;
+  width: 90vw;
+  display: grid;
+  grid-template-rows: 0.4fr 1.75fr 1.75fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+  grid-template-areas: 
+    "sidebar header header header"
+    "sidebar pic1 pic1 text1"
+    "sidebar text2 pic2 pic2";
+}
+
+@media only screen and (max-width: 1000px) {
+  .grid-container {
+    grid-template-rows: 1.5fr 5fr 5fr ;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "header"
+      "text1"
+      "text2"
+  }
+}
+.row-one {
+  background-color: lavender;
+  grid-area: header;
+}
+
+.row-two {
+  background-image: url('/assets/images/buildings.jpg');
+  background-color: lightblue;
+  background-repeat: no-repeat;
+  background-size: cover;
+  grid-area: sidebar;
+}
+
+.row-three {
+  /* background-color: green ; */
+  background-image: url('/assets/images/money.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  grid-area: pic1;
+}
+
+.row-four {
+  background-color: white;
+  grid-area: text1;
+  /* align-self: center; */
+  justify-self: center;
+}
+.row-five {
+  background-color: white;
+  grid-area: text2;
+}
+
+.row-six {
+  /* background-color: chocolate; */
+  background-image: url('/assets/images/design.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  grid-area: pic2;
+}
+
 
 /* .navbar-collapse {
   justify-content: left;

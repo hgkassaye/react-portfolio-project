@@ -35,7 +35,7 @@ const RenderImageItem = (info) => {
                 onExited={() => setAnimating(false)}
                 key={item.image}
             >
-                <img className='d-block w-100' src={baseUrl + item} alt='Image not found' />
+                <img className='d-block w-100 height' src={baseUrl + item} alt='Image not found' />
             </CarouselItem>
         );
     });
