@@ -29,7 +29,7 @@ class Home extends Component {
                             <h4 style={{textAlign: 'center', fontWeight: '500px', fontSize: '4rem'}}>Most Searched Cities</h4>
                         </div>
                     </div>
-                    <div className='row'>
+                    <div style={{marginBottom: '10%'}} className='row'>
                         <div className='col-sm-12 col-md-4'>
                             <Card>
                                 <CardImg width='100%' height='420px'src='/assets/images/philly.jpg' alt='Philadeplphia' />
