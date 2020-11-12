@@ -112,7 +112,7 @@ class Add extends Component {
                                 </Row>  */}
                                 <Row className='form-group'> 
                                     <Col md={{ size: 9, offset: 2}}>
-                                        <Button onClick={reset} className='form-control' type='Submit' color='primary' >
+                                        <Button className='form-control' type='Submit' color='primary' >
                                             Post Listing
                                         </Button>
                                     </Col>
