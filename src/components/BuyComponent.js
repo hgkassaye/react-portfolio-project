@@ -1,8 +1,7 @@
 import React, { Component, useState } from 'react';
-import { Button, Card, CardBody,CardImg, CardTitle, CardText, CardSubtitle, Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption, UncontrolledCarousel } from 'reactstrap';
+import { Button, Card, CardBody, CardTitle, CardText, CardSubtitle, Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption, UncontrolledCarousel } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import {FaHeart } from 'react-icons/fa';
-import {FaRegHeart} from 'react-icons/fa';
+import {FaHeart, FaRegHeart } from 'react-icons/fa';
 import { Loading } from './LoadingComponent'
 import { baseUrl } from '../shared/baseUrl';
 
@@ -67,7 +66,6 @@ function Buy(props) {
 
     const markFavorite = (id) => {
         props.postFavorite(id);
-        alert({id})
     }
 
     const listingItem = listings.map(listing => {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import { Button, Form, FormGroup, Label, Input, Col} from 'reactstrap'
 import { Button, Label, Container,Col, Row} from 'reactstrap';
-import { Control, LocalForm } from 'react-redux-form';
+import { Control, LocalForm, actions } from 'react-redux-form';
 
 const image = ['assets/images/homeone/home-one.jpg','assets/images/homeone/home-two.jpg','assets/images/homeone/home-three.jpg','assets/images/homeone/home-four.jpg' ]
 class Add extends Component {
@@ -19,37 +19,24 @@ class Add extends Component {
             image: []
         };
 
-        // this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        // this.handleFileChange = this.handleFileChange.bind(this);
+
     }
 
-    // handleInputChange(event) {
-    //     const target = event.target;
-    //     const name = target.name;
-    //     const value = target.type === 'checkbox' ? target.checked : target.value;
-
-    //     this.setState({
-    //         [name]: value
-    //     });
-    // }
-
     handleSubmit(values) {
-        console.log("current state is : " + JSON.stringify(values));
-        alert("current state is : " + JSON.stringify(values));
-        this.props.postListing(values.name, values.price, values.type,image)
+        this.props.addListing(values.name, values.price, values.type,image)
         // event.preventDefault();
     }
 
-    // handleFileChange(event) {
-    //     this.setState({ image: event.target.files})
-    // }
+    resetForm() {
+        this.setState({
+            address: '',
+            price: '',
+            type: '',
+            propertytype: ''
+        })
+    }
 
-    // uploadFile = () => {
-    //     console.log('I am here')
-    //     console.log(this.state.image)
-    //     alert(this.state.image)
-    // }
 
     render() {
         return (
@@ -68,8 +55,6 @@ class Add extends Component {
                                         <Control.text model='.name' id='name' name='name'
                                             placeholder='Address'
                                             className='form-control'
-                                            // value={this.state.address}
-                                            // onChange={this.handleInputChange}
                                         />
                                     </Col>
                                 </Row>
@@ -79,8 +64,6 @@ class Add extends Component {
                                         <Control.text model='.price' id='price' name='price'
                                             placeholder='Listing Price'
                                             className='form-control'
-                                            // value={this.state.price}
-                                            // onChange={this.handleInputChange}
                                         />
                                     </Col>
                                 </Row>
@@ -90,8 +73,6 @@ class Add extends Component {
                                         <Control.text model='.type' id='type' name='type'
                                             placeholder='Buy or Rent'
                                             className='form-control'
-                                            // value={this.state.price}
-                                            // onChange={this.handleInputChange}
                                         />
                                     </Col>
                                 </Row>
@@ -115,7 +96,7 @@ class Add extends Component {
                                         />
                                     </Col>
                                 </Row>  */}
-                                <Row className='form-group'>
+                                {/* <Row className='form-group'>
                                     <Label htmlFor='image' md={3}> Add Image</Label>
                                     <Col md={9}>
                                         <Control.file model='.image' id='image' name='image'
@@ -128,10 +109,10 @@ class Add extends Component {
                                         <Button onClick={this.uploadFile}>Upload</Button>
 
                                     </Col>
-                                </Row> 
+                                </Row>  */}
                                 <Row className='form-group'> 
                                     <Col md={{ size: 9, offset: 2}}>
-                                        <Button type='Submit' color='primary'>
+                                        <Button onClick={reset} className='form-control' type='Submit' color='primary' >
                                             Post Listing
                                         </Button>
                                     </Col>

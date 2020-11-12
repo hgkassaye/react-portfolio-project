@@ -1,5 +1,6 @@
 import React, { Component, useState } from 'react';
-import { Card, CardBody,CardImg, CardTitle, Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption, UncontrolledCarousel, CardSubtitle } from 'reactstrap';
+import { Card, CardBody, CardText, CardTitle, Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption, UncontrolledCarousel, CardSubtitle } from 'reactstrap';
+import {FaHeart, FaRegHeart } from 'react-icons/fa';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
 
@@ -61,6 +62,10 @@ function Rent(props) {
     }
     const listings = props.listings.filter(listing => listing.type === 'rent')
 
+    const markFavorite = (id) => {
+        props.postFavorite(id);
+    }
+
     const listingItem = listings.map(listing => {
         return (
             <div className='col-md-6'>
@@ -71,6 +76,9 @@ function Rent(props) {
                             <h4>{listing.price}</h4>
                         </CardTitle>
                         <CardSubtitle>{listing.name}</CardSubtitle>
+                        <CardText>
+                            { (props.favorites.includes(listing.id)) ? <FaHeart style={{color:'red'}} onClick={() => markFavorite(listing.id)}/> : <FaRegHeart style={{color:'red'}} onClick={() => markFavorite(listing.id)}/> }
+                        </CardText>
                     </CardBody>
                 </Card>
             </div>

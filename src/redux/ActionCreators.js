@@ -8,6 +8,7 @@ export const fetchListings = () => dispatch =>{
     // setTimeout(() => {
     //     dispatch(renderListing(LISTINGS));
     // }, 2000);
+    
     return fetch(baseUrl + 'listings')
         .then(response => response.json())
         .then(LISTINGS => dispatch(renderListing(LISTINGS)))
@@ -27,55 +28,55 @@ export const renderListing = (listings) => ({
     payload: listings
 });
 
-// export const addListing = (name, price,type,image) => ({
-//     type: ActionTypes.ADD_LISTING,
-//     payload: {
-//         name: name,
-//         price: price,
-//         type: type,
-//         image: image,
-//     }
-// });
-
-
-export const addListing = (listing) => ({
+export const addListing = (name, price,type,image) => ({
     type: ActionTypes.ADD_LISTING,
-    payload: listing
-})
-
-export const postListing = (name, price, type, image) => dispatch => {
-    const newListing = {
+    payload: {
         name: name,
-        price: price, 
-        type: type, 
+        price: price,
+        type: type,
         image: image,
-    };
+    }
+});
 
-    return fetch(baseUrl + 'listings', {
-            method: "POST",
-            body: JSON.stringify(newListing),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        .then(response => {
-                if (response.ok) {
-                    return response;
-                } else {
-                    const error = new Error(`Error ${response.status}: ${response.statusText}`);
-                    error.response = response;
-                    throw error;
-                }
-            }, 
-            error => { throw error; }
-        )
-        .then(response => response.json())
-        .then(response => dispatch(addListing(response)))
-        .catch(error => {
-            alert('Your comment could not be posted\n' + error.message);
-        });
 
-}
+// export const addListing = (listing) => ({
+//     type: ActionTypes.ADD_LISTING,
+//     payload: listing
+// })
+
+// export const postListing = (name, price, type, image) => dispatch => {
+//     const newListing = {
+//         name: name,
+//         price: price, 
+//         type: type, 
+//         image: image,
+//     };
+
+//     return fetch(baseUrl + 'listings', {
+//             method: "POST",
+//             body: JSON.stringify(newListing),
+//             headers: {
+//                 "Content-Type": "application/json"
+//             }
+//         })
+//         .then(response => {
+//                 if (response.ok) {
+//                     return response;
+//                 } else {
+//                     const error = new Error(`Error ${response.status}: ${response.statusText}`);
+//                     error.response = response;
+//                     throw error;
+//                 }
+//             }, 
+//             error => { throw error; }
+//         )
+//         .then(response => response.json())
+//         .then(response => dispatch(addListing(response)))
+//         .catch(error => {
+//             alert('Your comment could not be posted\n' + error.message);
+//         });
+
+// }
 
 export const postFavorite = (id) => dispatch => {
     setTimeout(() => {

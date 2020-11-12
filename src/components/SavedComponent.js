@@ -1,7 +1,9 @@
 import React, { Component, useState } from 'react';
-import { Button, Card, CardBody,CardImg, CardTitle, CardSubtitle, Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption, UncontrolledCarousel } from 'reactstrap';
+import { Button, Card, CardBody, CardText, CardTitle, CardSubtitle, Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption, UncontrolledCarousel } from 'reactstrap';
+import {FaHeart, FaRegHeart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
+import { baseUrl } from '../shared/baseUrl';
 
 
 const RenderImageItem = (info) => {
@@ -33,7 +35,7 @@ const RenderImageItem = (info) => {
                 onExited={() => setAnimating(false)}
                 key={item.image}
             >
-                <img className='d-block w-100' src={item} alt='Image not found' />
+                <img className='d-block w-100' src={baseUrl + item} alt='Image not found' />
             </CarouselItem>
         );
     });
@@ -60,6 +62,11 @@ function Favorite (props) {
         return <h4>{props.errMess}</h4>
     }
     const listings = props.listings.filter(listing => props.favorites.includes(listing.id))
+
+    const markFavorite = (id) => {
+        props.postFavorite(id);
+    }
+
     const listingItem = listings.map(listing => {
         return (
             <div className='col-md-6'>
@@ -70,6 +77,9 @@ function Favorite (props) {
                             <h4>{listing.price}</h4>
                         </CardTitle>
                         <CardSubtitle>{listing.name}</CardSubtitle>
+                        <CardText>
+                            { (props.favorites.includes(listing.id)) ? <FaHeart style={{color:'red'}} onClick={() => markFavorite(listing.id)}/> : <FaRegHeart style={{color:'red'}} onClick={() => markFavorite(listing.id)}/> }
+                        </CardText>
                     </CardBody>
                 </Card>
             </div>
