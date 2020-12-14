@@ -60,7 +60,7 @@ function Rent(props) {
     if (props.errMess) {
         return <h4>{props.errMess}</h4>
     }
-    const listings = props.listings.filter(listing => listing.type === 'rent')
+    const listings = props.listings.filter(listing => listing.type === 'Rent')
 
     const markFavorite = (id) => {
         props.postFavorite(id);

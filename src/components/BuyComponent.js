@@ -62,7 +62,7 @@ function Buy(props) {
         return <h4>{props.errMess}</h4>
     }
 
-    const listings = props.listings.filter(listing => listing.type === 'buy')
+    const listings = props.listings.filter(listing => listing.type === 'Buy')
 
     const markFavorite = (id) => {
         props.postFavorite(id);
