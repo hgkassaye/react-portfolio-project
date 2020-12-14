@@ -17,6 +17,7 @@ class Add extends Component {
             type: '',
             propertytype: '',
             image: []
+            // image: ''
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,8 +25,20 @@ class Add extends Component {
     }
 
     handleSubmit(values) {
-        this.props.addListing(values.name, values.price, values.type,image)
+        // this.props.addListing(values.name, values.price, values.type,image)
+        this.props.postListing(values.name, values.price, values.type, values.image)
         // event.preventDefault();
+        let formData = new FormData()
+        formData.append('name', values.name)
+        formData.append('price', values.price)
+        formData.append('type', values.type)
+        // formData.append('image', values.image[0])
+        // formData.append('image', values.image[1])
+        for (let i = 0; i < values.image.length; i++) {
+            formData.append('image', values.image[i])
+        }
+        
+        this.props.postListing(formData)
     }
 
     resetForm() {
@@ -96,20 +109,20 @@ class Add extends Component {
                                         />
                                     </Col>
                                 </Row>  */}
-                                {/* <Row className='form-group'>
+                                <Row className='form-group'>
                                     <Label htmlFor='image' md={3}> Add Image</Label>
                                     <Col md={9}>
                                         <Control.file model='.image' id='image' name='image'
                                             placeholder='Image'
                                             className='form-control'
                                             // value={this.state.image}
-                                            onChange={this.handleFileChange}
+                                            // onChange={this.handleFileChange}
                                             multiple
                                         />
-                                        <Button onClick={this.uploadFile}>Upload</Button>
+                                        {/* <Button onClick={this.uploadFile}>Upload</Button> */}
 
                                     </Col>
-                                </Row>  */}
+                                </Row> 
                                 <Row className='form-group'> 
                                     <Col md={{ size: 9, offset: 2}}>
                                         <Button className='form-control' type='Submit' color='primary' >

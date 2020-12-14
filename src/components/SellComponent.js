@@ -71,6 +71,7 @@ function Rent(props) {
             <div className='col-md-6'>
                 <Card>
                     <RenderImageItem info={listing.image}/>
+                    {/* <RenderImageItem Infor = "images/hometwo/home-one.jpg" /> */}
                     <CardBody>
                         <CardTitle>
                             <h4>{listing.price}</h4>

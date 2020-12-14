@@ -77,6 +77,7 @@ function Buy(props) {
                         <CardTitle>
                             <h4>{listing.price}</h4>
                         </CardTitle>
+                        {/* <CardSubtitle>{listing.name}</CardSubtitle> */}
                         <CardSubtitle>{listing.name}</CardSubtitle>
                         <CardText>
                             { (props.favorites.includes(listing.id)) ? <FaHeart style={{color:'red'}} onClick={() => markFavorite(listing.id)}/> : <FaRegHeart style={{color:'red'}} onClick={() => markFavorite(listing.id)}/> }

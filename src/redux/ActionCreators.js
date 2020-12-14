@@ -9,7 +9,8 @@ export const fetchListings = () => dispatch =>{
     //     dispatch(renderListing(LISTINGS));
     // }, 2000);
     
-    return fetch(baseUrl + 'listings')
+    // return fetch(baseUrl + 'listings')
+    return fetch(baseUrl + 'all')
         .then(response => response.json())
         .then(LISTINGS => dispatch(renderListing(LISTINGS)))
 }
@@ -28,21 +29,21 @@ export const renderListing = (listings) => ({
     payload: listings
 });
 
-export const addListing = (name, price,type,image) => ({
-    type: ActionTypes.ADD_LISTING,
-    payload: {
-        name: name,
-        price: price,
-        type: type,
-        image: image,
-    }
-});
-
-
-// export const addListing = (listing) => ({
+// export const addListing = (name, price,type,image) => ({
 //     type: ActionTypes.ADD_LISTING,
-//     payload: listing
-// })
+//     payload: {
+//         name: name,
+//         price: price,
+//         type: type,
+//         image: image,
+//     }
+// });
+
+
+export const addListing = (listing) => ({
+    type: ActionTypes.ADD_LISTING,
+    payload: listing
+})
 
 // export const postListing = (name, price, type, image) => dispatch => {
 //     const newListing = {
@@ -51,32 +52,34 @@ export const addListing = (name, price,type,image) => ({
 //         type: type, 
 //         image: image,
 //     };
+export const postListing = (formData) => dispatch => {
 
-//     return fetch(baseUrl + 'listings', {
-//             method: "POST",
-//             body: JSON.stringify(newListing),
-//             headers: {
-//                 "Content-Type": "application/json"
-//             }
-//         })
-//         .then(response => {
-//                 if (response.ok) {
-//                     return response;
-//                 } else {
-//                     const error = new Error(`Error ${response.status}: ${response.statusText}`);
-//                     error.response = response;
-//                     throw error;
-//                 }
-//             }, 
-//             error => { throw error; }
-//         )
-//         .then(response => response.json())
-//         .then(response => dispatch(addListing(response)))
-//         .catch(error => {
-//             alert('Your comment could not be posted\n' + error.message);
-//         });
+    return fetch(baseUrl + 'list', {
+            method: "POST",
+            body: formData
+            // body: JSON.stringify(newListing),
+            // headers: {
+            //     "Content-Type": "application/json"
+            // }
+        })
+        .then(response => {
+                if (response.ok) {
+                    return response;
+                } else {
+                    const error = new Error(`Error ${response.status}: ${response.statusText}`);
+                    error.response = response;
+                    throw error;
+                }
+            }, 
+            error => { throw error; }
+        )
+        .then(response => response.json())
+        .then(response => dispatch(addListing(response)))
+        .catch(error => {
+            alert('Your comment could not be posted\n' + error.message);
+        });
 
-// }
+}
 
 export const postFavorite = (id) => dispatch => {
     setTimeout(() => {

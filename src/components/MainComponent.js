@@ -8,7 +8,7 @@ import Add from './AddListing';
 import Favorite from './SavedComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addListing, postFavorite, fetchListings} from '../redux/ActionCreators';
+import { postListing, addListing, postFavorite, fetchListings} from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
     return {
@@ -19,8 +19,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     fetchListings: () => (fetchListings()),
-    addListing: (name, price, type, image ) => (addListing(name, price, type, image)),
-    // postListing: (name, price, type, image ) => (postListing(name, price, type, image)),
+    // addListing: (name, price, type, image ) => (addListing(name, price, type, image)),
+    // postListing: (name, price, type, image) => (postListing(name, price, type, image)),
+    postListing: (formData) => postListing(formData),
     postFavorite: (id) => (postFavorite(id))
 }
 
@@ -28,6 +29,7 @@ class Main extends Component {
 
     componentDidMount() {
         this.props.fetchListings();
+        console.log(this.props.fetchListings)
     }
 
     render() {
@@ -52,7 +54,8 @@ class Main extends Component {
                         postFavorite={this.props.postFavorite}/>} 
                     />
                     {/* <Route exact path='/list' render={() => <Add addListing={this.props.addListing} />} /> */}
-                    <Route exact path='/list' render={() => <Add addListing={this.props.addListing} />} />
+                    {/* <Route exact path='/list' render={() => <Add addListing={this.props.addListing} />} /> */}
+                    <Route exact path='/list' render={() => <Add postListing={this.props.postListing} />} />
                     <Route exact path='/favorite' render={() => <Favorite 
                         listings={this.props.listings.listings} 
                         isLoading={this.props.listings.isLoading}
