@@ -56,11 +56,11 @@ export const postListing = (formData) => dispatch => {
 
     return fetch(baseUrl + 'list', {
             method: "POST",
-            body: formData
-            // body: JSON.stringify(newListing),
-            // headers: {
-            //     "Content-Type": "application/json"
-            // }
+            body: formData,
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
+            
         })
         .then(response => {
                 if (response.ok) {

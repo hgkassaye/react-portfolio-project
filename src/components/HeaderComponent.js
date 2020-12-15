@@ -9,10 +9,11 @@ class Header extends Component {
         this.state = {
             firstName: '',
             lastName: '',
-            userName: '',
+            username: '',
             password: '',
             isNavOpen: false,
-            idModalOpen: false,
+            isLogInModalOpen: false,
+            isSignUpModalOpen: false,
         };
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleLoginModal = this.toggleLoginModal.bind(this);
@@ -27,24 +28,51 @@ class Header extends Component {
 
     toggleLoginModal() {
         this.setState ({
-            isModalOpen: !this.state.isModalOpen
+            isLogInModalOpen: !this.state.isLogInModalOpen
         });
     }
 
     toggleSignupModal() {
         this.setState ({
-            isModalOpen: !this.state.isModalOpen
+            isSignUpModalOpen: !this.state.isSignUpModalOpen
         })
     }
 
 
+    handleLogin(event) { 
+        event.preventDefault();
+        this.toggleLoginModal();
 
-    handleLogin(event) {
-        // console.log(event.target.firstname.value)
+        const logIn = {
+            "username": event.target.username.value,
+            "password": event.target.password.value
+        }
+
+        fetch(baseUrl + 'user/login', {
+            method: "POST",
+            body: JSON.stringify(logIn),
+            headers: {'Content-Type':'application/json'}
+        })
+        // .then(response => console.log(response.json()))
+        .then(response => response.json())
+        .then(data => {
+            if (data.token) {
+                // console.log(data.token)
+                localStorage.setItem('token', data.token)
+                const token = localStorage.getItem('token')
+                console.log(token)
+            }
+        })
+        .catch(error => console.log(error))
+
+    }
+
+    handleSignup(event) {
+        event.preventDefault();
         const userInfo = {
             'firstName' : event.target.firstname.value,
             'lastName' : event.target.lastname.value,
-            'userName' : event.target.username.value,
+            'username' : event.target.username.value,
             'password' : event.target.password.value
         }
         
@@ -57,7 +85,7 @@ class Header extends Component {
         }) 
         alert ('logged in');
         // this.toggleLoginModal();
-        event.preventdefault();
+        
     }
 
     
@@ -105,7 +133,7 @@ class Header extends Component {
                     {/* </div> */} 
                 </Navbar>
 
-                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleLoginModal}>
+                <Modal isOpen={this.state.isLogInModalOpen} toggle={this.toggleLoginModal}>
                     <ModalHeader toggle={this.toggleLoginModal}>Login</ModalHeader>
                     <ModalBody>
                         <Form onSubmit={this.handleLogin}>
@@ -128,10 +156,10 @@ class Header extends Component {
                     </ModalBody>
                 </Modal>
 
-                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleSignupModal}>
+                <Modal isOpen={this.state.isSignUpModalOpen} toggle={this.toggleSignupModal}>
                     <ModalHeader toggle={this.toggleSignupModal}>Signup</ModalHeader>
                     <ModalBody>
-                        <Form onSubmit={this.handleLogin}>
+                        <Form onSubmit={this.handleSignup}>
                             <FormGroup>
                                 <Label htmlFor='firstname'>First Name</Label>
                                 <Input type='text' id='firstname' name='firstname' />
