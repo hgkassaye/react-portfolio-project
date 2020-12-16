@@ -149,9 +149,6 @@ class Header extends Component {
                                 {localStorage.getItem('token') && (
                                     <Button type='submit' style={{marginLeft: '15px'}} outline onClick={()=>this.handleSignout()}>Sign Out</Button>
                                 )}
-                                
-                                
-                                
                             </span>
                         </Collapse>
                     {/* </div> */} 

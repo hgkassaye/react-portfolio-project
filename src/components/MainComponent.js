@@ -6,6 +6,7 @@ import Buy from './BuyComponent';
 import Rent from './SellComponent';
 import Add from './AddListing';
 import Favorite from './SavedComponent';
+import View from './ViewComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { postListing, addListing, postFavorite, fetchListings} from '../redux/ActionCreators';
@@ -63,6 +64,7 @@ class Main extends Component {
                         favorites={this.props.favorites}
                         postFavorite={this.props.postFavorite}/>} 
                     />
+                    <Route exact path='/buy/:listingId' component= {View} />
                     <Redirect to='/home' /> 
                 </Switch>
                 <Footer />

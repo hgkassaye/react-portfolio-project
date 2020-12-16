@@ -29,29 +29,13 @@ export const renderListing = (listings) => ({
     payload: listings
 });
 
-// export const addListing = (name, price,type,image) => ({
-//     type: ActionTypes.ADD_LISTING,
-//     payload: {
-//         name: name,
-//         price: price,
-//         type: type,
-//         image: image,
-//     }
-// });
-
 
 export const addListing = (listing) => ({
     type: ActionTypes.ADD_LISTING,
     payload: listing
 })
 
-// export const postListing = (name, price, type, image) => dispatch => {
-//     const newListing = {
-//         name: name,
-//         price: price, 
-//         type: type, 
-//         image: image,
-//     };
+
 export const postListing = (formData) => dispatch => {
 
     return fetch(baseUrl + 'list', {
@@ -92,3 +76,29 @@ export const addFavorite = (id) => ({
     type: ActionTypes.ADD_FAVORITE,
     payload: id
 });
+
+
+
+
+
+// export const addListing = (name, price,type,image) => ({
+//     type: ActionTypes.ADD_LISTING,
+//     payload: {
+//         name: name,
+//         price: price,
+//         type: type,
+//         image: image,
+//     }
+// });
+
+
+
+// export const postListing = (name, price, type, image) => dispatch => {
+//     const newListing = {
+//         name: name,
+//         price: price, 
+//         type: type, 
+//         image: image,
+//     };
+
+

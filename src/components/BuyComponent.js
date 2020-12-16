@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import { Button, Card, CardBody, CardTitle, CardText, CardSubtitle, Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption, UncontrolledCarousel } from 'reactstrap';
+import { Button, Modal, Card, CardBody, CardTitle, CardText, CardSubtitle, Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption, UncontrolledCarousel } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import {FaHeart, FaRegHeart } from 'react-icons/fa';
 import { Loading } from './LoadingComponent'
@@ -54,6 +54,12 @@ const RenderImageItem = (info) => {
 
 
 function Buy(props) {
+
+    // const [show, setShow] = useState(false);
+
+    // const handleClose = () => setShow(false);
+    // const handleShow = () => setShow(true);
+
     if (props.isLoading) {
         return <Loading />;
     }
@@ -68,25 +74,39 @@ function Buy(props) {
         props.postFavorite(id);
     }
 
-    const listingItem = listings.map(listing => {
-        return (
-            <div className='col-md-6'>
-                <Card>
-                    <RenderImageItem info={listing.image}/>
-                    <CardBody>
-                        <CardTitle>
-                            <h4>{listing.price}</h4>
-                        </CardTitle>
-                        {/* <CardSubtitle>{listing.name}</CardSubtitle> */}
-                        <CardSubtitle>{listing.name}</CardSubtitle>
-                        <CardText>
-                            { (props.favorites.includes(listing.id)) ? <FaHeart style={{color:'red'}} onClick={() => markFavorite(listing.id)}/> : <FaRegHeart style={{color:'red'}} onClick={() => markFavorite(listing.id)}/> }
-                        </CardText>
-                        
+    
 
-                    </CardBody>
-                </Card>
-            </div>
+    const listingItem = listings.map(listing => {
+
+        return (
+            <>
+                <div className='col-md-6'>
+                    <Card>
+                        <RenderImageItem info={listing.image}/>
+                        <CardBody>
+                            <CardTitle>
+                                <h4>{listing.price}</h4>
+                            </CardTitle>
+                            {/* <CardSubtitle>{listing.name}</CardSubtitle> */}
+                            <CardSubtitle>{listing.name}</CardSubtitle>
+                            <CardText>
+                                {listing._id}
+                                { (props.favorites.includes(listing.id)) ? <FaHeart style={{color:'red'}} onClick={() => markFavorite(listing.id)}/> : <FaRegHeart style={{color:'red'}} onClick={() => markFavorite(listing.id)}/> }
+                            </CardText> 
+                            <Link to={`/buy/${listing._id}`}>
+                                <Button> View</Button>
+                            </Link>        
+                            
+                        </CardBody>
+                    </Card>
+                </div>
+
+                {/* <Modal show={show} onHide={handleClose} fade={false} backdrop="static">
+                    <Modal.Header>
+                        <Modal.Title>Title</Modal.Title>
+                    </Modal.Header>
+                </Modal> */}
+            </>
         )
     });
  
