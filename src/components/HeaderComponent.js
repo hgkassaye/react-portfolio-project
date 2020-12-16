@@ -7,18 +7,22 @@ class Header extends Component {
     constructor(props){
         super(props);
         this.state = {
-            firstName: '',
-            lastName: '',
-            username: '',
-            password: '',
+            // firstName: '',
+            // lastName: '',
+            // username: '',
+            // password: '',
+            // userToken: localStorage.getItem('token'),
+            reloadPage: false,
             isNavOpen: false,
             isLogInModalOpen: false,
             isSignUpModalOpen: false,
         };
+        
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleLoginModal = this.toggleLoginModal.bind(this);
         this.toggleSignupModal = this.toggleSignupModal.bind(this)
         this.handleLogin = this.handleLogin.bind(this);
+        this.handleSignout = this.handleSignout.bind(this);
     }
     toggleNav() {
         this.setState ({
@@ -59,6 +63,9 @@ class Header extends Component {
             if (data.token) {
                 // console.log(data.token)
                 localStorage.setItem('token', data.token)
+                this.setState ({
+                    reloadPage: !this.state.reloadPage
+                })
                 const token = localStorage.getItem('token')
                 console.log(token)
             }
@@ -86,6 +93,13 @@ class Header extends Component {
         alert ('logged in');
         // this.toggleLoginModal();
         
+    }
+
+    handleSignout() {
+        localStorage.removeItem('token')
+        this.setState ({
+            reloadPage: !this.state.reloadPage
+        })
     }
 
     
@@ -125,9 +139,19 @@ class Header extends Component {
                                     <NavLink style={{paddingRight: '25px'}} className='nav-link lef-content' to='/list' onClick={this.toggleNav}>CREATE ACCOUNT</NavLink>
                                 </NavItem>
                             </Nav> */}
-                            <span className='ml-auto'>
-                                <Button style={{marginLeft: '15px'}} outline onClick={this.toggleLoginModal}>Login</Button>
-                                <Button style={{marginLeft: '15px'}} outline onClick={this.toggleSignupModal}>Create Account</Button>
+                            <span className='ml-auto'> 
+                                {!localStorage.getItem('token') && (
+                                    <>
+                                        <Button style={{marginLeft: '15px'}} outline onClick={this.toggleLoginModal}>Login</Button>
+                                        <Button style={{marginLeft: '15px'}} outline onClick={this.toggleSignupModal}>Create Account</Button>
+                                    </>
+                                )}
+                                {localStorage.getItem('token') && (
+                                    <Button type='submit' style={{marginLeft: '15px'}} outline onClick={()=>this.handleSignout()}>Sign Out</Button>
+                                )}
+                                
+                                
+                                
                             </span>
                         </Collapse>
                     {/* </div> */} 
